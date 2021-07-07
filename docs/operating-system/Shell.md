@@ -45,15 +45,14 @@
 
 另外，了解 shell 编程也是大部分互联网公司招聘后端开发人员的要求。下图是我截取的一些知名互联网公司对于 Shell 编程的要求。
 
-![大型互联网公司对于shell编程技能的要求](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-16/60190220.jpg)
+![大型互联网公司对于shell编程技能的要求](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-16/60190220.jpg)
 
 ### 什么是 Shell？
 
 简单来说“Shell编程就是对一堆Linux命令的逻辑化处理”。
 
-
 W3Cschool 上的一篇文章是这样介绍 Shell的，如下图所示。
-![什么是 Shell？](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-26/19456505.jpg)
+![什么是 Shell？](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-26/19456505.jpg)
 
 
 ### Shell 编程的 Hello World
@@ -78,9 +77,9 @@ echo  "helloworld!"
 shell中 # 符号表示注释。**shell 的第一行比较特殊，一般都会以#!开始来指定使用的 shell 类型。在linux中，除了bash shell以外，还有很多版本的shell， 例如zsh、dash等等...不过bash shell还是我们使用最多的。**
 
 
-(4) 运行脚本:`./helloworld.sh` 。（注意，一定要写成 `./helloworld.sh` ，而不是 `helloworld.sh` ，运行其它二进制的程序也一样，直接写 `helloworld.sh` ，linux 系统会去 PATH 里寻找有没有叫 test.sh 的，而只有 /bin, /sbin, /usr/bin，/usr/sbin 等在 PATH 里，你的当前目录通常不在 PATH 里，所以写成 `helloworld.sh` 是会找不到命令的，要用`./helloworld.sh` 告诉系统说，就在当前目录找。）
+(4) 运行脚本:`./helloworld.sh` 。（注意，一定要写成 `./helloworld.sh` ，而不是 `helloworld.sh` ，运行其它二进制的程序也一样，直接写 `helloworld.sh` ，linux 系统会去 PATH 里寻找有没有叫 helloworld.sh 的，而只有 /bin, /sbin, /usr/bin，/usr/sbin 等在 PATH 里，你的当前目录通常不在 PATH 里，所以写成 `helloworld.sh` 是会找不到命令的，要用`./helloworld.sh` 告诉系统说，就在当前目录找。）
 
-![shell 编程Hello World](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-16/55296212.jpg)
+![shell 编程Hello World](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-16/55296212.jpg)
 
 
 ## Shell 变量
@@ -91,7 +90,7 @@ shell中 # 符号表示注释。**shell 的第一行比较特殊，一般都会�
 **Shell编程中一般分为三种变量：**
 
 1. **我们自己定义的变量（自定义变量）:** 仅在当前 Shell 实例中有效，其他 Shell 启动的程序不能访问局部变量。
-2. **Linux已定义的环境变量**（环境变量， 例如：$PATH, $HOME 等..., 这类变量我们可以直接使用），使用 `env` 命令可以查看所有的环境变量，而set命令既可以查看环境变量也可以查看自定义变量。
+2. **Linux已定义的环境变量**（环境变量， 例如：`PATH`, ​`HOME` 等..., 这类变量我们可以直接使用），使用 `env` 命令可以查看所有的环境变量，而set命令既可以查看环境变量也可以查看自定义变量。
 3. **Shell变量** ：Shell变量是由 Shell 程序设置的特殊变量。Shell 变量中有一部分是环境变量，有一部分是局部变量，这些变量保证了 Shell 的正常运行
 
 **常用的环境变量:**
@@ -118,7 +117,7 @@ hello="hello world"
 echo $hello
 echo  "helloworld!"
 ```
-![使用自己定义的变量](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-17/19835037.jpg)
+![使用自己定义的变量](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-17/19835037.jpg)
 
 
 **Shell 编程中的变量名的命名的注意事项：**
@@ -183,7 +182,7 @@ echo $greeting_2  $greeting_3
 
 输出结果：
 
-![输出结果](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-17/51148933.jpg)
+![输出结果](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-17/51148933.jpg)
 
 
 **获取字符串长度：**
@@ -234,13 +233,17 @@ echo ${str:0:10} #输出:SnailClimb
 #!bin/bash
 #author:amau
 
-var="http://www.runoob.com/linux/linux-shell-variable.html"
-
-s1=${var%%t*}#h
-s2=${var%t*}#http://www.runoob.com/linux/linux-shell-variable.h
-s3=${var%%.*}#http://www
-s4=${var#*/}#/www.runoob.com/linux/linux-shell-variable.html
-s5=${var##*/}#linux-shell-variable.html
+var="https://www.runoob.com/linux/linux-shell-variable.html"
+# %表示删除从后匹配, 最短结果
+# %%表示删除从后匹配, 最长匹配结果
+# #表示删除从头匹配, 最短结果
+# ##表示删除从头匹配, 最长匹配结果
+# 注: *为通配符, 意为匹配任意数量的任意字符
+s1=${var%%t*} #h
+s2=${var%t*}  #https://www.runoob.com/linux/linux-shell-variable.h
+s3=${var%%.*} #http://www
+s4=${var#*/}  #/www.runoob.com/linux/linux-shell-variable.html
+s5=${var##*/} #linux-shell-variable.html
 ```
 
 ### Shell 数组
@@ -260,9 +263,9 @@ echo $length #输出：5
 echo $length2 #输出：5
 # 输出数组第三个元素
 echo ${array[2]} #输出：3
-unset array[1]# 删除下表为1的元素也就是删除第二个元素
+unset array[1]# 删除下标为1的元素也就是删除第二个元素
 for i in ${array[@]};do echo $i ;done # 遍历数组，输出： 1 3 4 5 
-unset arr_number; # 删除数组中的所有元素
+unset array; # 删除数组中的所有元素
 for i in ${array[@]};do echo $i ;done # 遍历数组，数组元素为空，没有任何输出内容
 ```
 
@@ -272,7 +275,7 @@ for i in ${array[@]};do echo $i ;done # 遍历数组，数组元素为空，没�
 > 说明：图片来自《菜鸟教程》
 
  Shell 编程支持下面几种运算符
- 
+
 - 算数运算符
 - 关系运算符
 - 布尔运算符
@@ -281,16 +284,16 @@ for i in ${array[@]};do echo $i ;done # 遍历数组，数组元素为空，没�
 
 ### 算数运算符
 
-![算数运算符](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-22/4937342.jpg)
+![算数运算符](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-22/4937342.jpg)
 
-我以加法运算符做一个简单的示例：
+我以加法运算符做一个简单的示例（注意：不是单引号，是反引号）：
 
 ```shell
 #!/bin/bash
 a=3;b=3;
 val=`expr $a + $b`
 #输出：Total value : 6
-echo "Total value : $val
+echo "Total value : $val"
 ```
 
 
@@ -298,7 +301,7 @@ echo "Total value : $val
 
 关系运算符只支持数字，不支持字符串，除非字符串的值是数字。
 
-![shell关系运算符](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-22/64391380.jpg)
+![shell关系运算符](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-22/64391380.jpg)
 
 通过一个简单的示例演示关系运算符的使用，下面shell程序的作用是当score=100的时候输出A否则输出B。
 
@@ -322,7 +325,7 @@ B
 
 ### 逻辑运算符
 
-![逻辑运算符](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-22/60545848.jpg)
+![逻辑运算符](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-22/60545848.jpg)
 
 示例：
 
@@ -336,18 +339,17 @@ echo $a;
 ### 布尔运算符
 
 
-![布尔运算符](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-22/93961425.jpg)
+![布尔运算符](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-22/93961425.jpg)
 
 这里就不做演示了，应该挺简单的。
 
 ### 字符串运算符
 
-![ 字符串运算符](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-22/309094.jpg)
+![ 字符串运算符](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-22/309094.jpg)
 
 简单示例：
 
 ```shell
-
 #!/bin/bash
 a="abc";
 b="efg";
@@ -366,7 +368,7 @@ a 不等于 b
 
 ### 文件相关运算符
 
-![文件相关运算符](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-22/60359774.jpg)
+![文件相关运算符](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-22/60359774.jpg)
 
 使用方式很简单，比如我们定义好了一个文件路径`file="/usr/learnshell/test.sh"` 如果我们想判断这个文件是否可读，可以这样`if [ -r $file ]` 如果想判断这个文件是否可写，可以这样`-w $file`，是不是很简单。
 
@@ -380,10 +382,10 @@ a 不等于 b
 #!/bin/bash
 a=3;
 b=9;
-if [ $a = $b ]
+if [ $a -eq $b ]
 then
    echo "a 等于 b"
-elif [ $a > $b ]
+elif [ $a -gt $b ]
 then
    echo "a 大于 b"
 else
@@ -394,7 +396,7 @@ fi
 输出结果：
 
 ```
-a 大于 b
+a 小于 b
 ```
 
 相信大家通过上面的示例就已经掌握了 shell 编程中的 if 条件语句。不过，还要提到的一点是，不同于我们常见的 Java 以及 PHP 中的 if 条件语句，shell  if 条件语句中不能包含空语句也就是什么都不做的语句。
@@ -467,7 +469,7 @@ done
 是的！变形金刚 是一个好电影
 ```
 
-**无线循环：**
+**无限循环：**
 
 ```shell
 while true
@@ -482,16 +484,20 @@ done
 
 ```shell
 #!/bin/bash
-function(){
+hello(){
     echo "这是我的第一个 shell 函数!"
 }
-function
+echo "-----函数开始执行-----"
+hello
+echo "-----函数执行完毕-----"
 ```
 
 输出结果：
 
 ```
+-----函数开始执行-----
 这是我的第一个 shell 函数!
+-----函数执行完毕-----
 ```
 
 
@@ -526,8 +532,6 @@ echo "输入的两个数字之和为 $?"
 
 ### 带参数的函数
 
-
-
 ```shell
 #!/bin/bash
 funWithParam(){
@@ -540,7 +544,6 @@ funWithParam(){
     echo "作为一个字符串输出所有参数 $* !"
 }
 funWithParam 1 2 3 4 5 6 7 8 9 34 73
-
 ```
 
 输出结果：
@@ -553,5 +556,4 @@ funWithParam 1 2 3 4 5 6 7 8 9 34 73
 第十一个参数为 73 !
 参数总数有 11 个!
 作为一个字符串输出所有参数 1 2 3 4 5 6 7 8 9 34 73 !
-
 ```
